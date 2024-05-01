@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+#table{
+
+    border: 2px solid black;
+    background-color: lightcyan;
+    height: 300px;
+    width: 300px;
+    margin-left: 600px;
+}
+#b{
+
+border: 1px solid black;
+text-align: center;
+
+}
+#bt{
+    color: red;
+    background-color:lightcyan;
+    align-items: center;
+    font-size: 30px;
+    border: 4px solid black;
+    border-radius: 15px;
+}
+    </style>
+</head>
+<body>
+  <script>
+//forheading
+
+var h=document.createElement("h2");
+h.innerText="Confirm User Details";
+document.body.appendChild(h);
+h.style.color="red";
+h.style.textAlign="center";
+
+//for create a table and tr,columns;
+var a=window.localStorage.getItem("users");
+var userdata= JSON.parse(a);
+
+
+var t=document.createElement("table");
+document.body.appendChild(t);
+t.setAttribute("id","table");
+
+var tr1=document.createElement("tr")
+var td1=document.createElement("td")
+td1.innerText="UserName"
+td1.style.color="blue"
+td1.setAttribute("id","b");
+t.appendChild(tr1);
+tr1.appendChild(td1);
+
+var td2=document.createElement("td")
+tr1.appendChild(td2);
+td2.setAttribute("id","b");
+td2.innerHTML=userdata[0].username;
+
+
+
+var tr2=document.createElement("tr")
+var td3=document.createElement("td");
+td3.setAttribute("id","b");
+td3.innerText="Password"
+td3.style.color="red"
+tr2.appendChild(td3)
+
+
+var td4=document.createElement("td")
+td4.setAttribute("id","b");
+td4.innerHTML=userdata[0].password;
+tr2.appendChild(td4);
+t.appendChild(tr2);
+
+
+var tr3=document.createElement("tr")
+var td5=document.createElement("td")
+td5.setAttribute("id","b")
+td5.innerText="Email"
+td5.style.color="green"
+tr3.appendChild(td5);
+t.appendChild(tr3);
+
+var td6=document.createElement("td");
+td6.setAttribute("id","b");
+tr3.appendChild(td6);
+td6.innerHTML=userdata[0].email;
+
+var tr4=document.createElement("tr");
+t.appendChild(tr4);
+var td7=document.createElement("td");
+tr4.appendChild(td7)
+td7.innerText="Phone number"
+td7.setAttribute("id","b")
+td7.style.color="maroon"
+var td8=document.createElement("td");
+tr4.appendChild(td8);
+td8.setAttribute("id","b");
+td8.innerHTML=userdata[0].phone;
+
+
+var divv=document.createElement("div");
+document.body.appendChild(divv);
+divv.style.textAlign="center";
+divv.style.padding="90px"
+
+var btn=document.createElement("button");
+divv.appendChild(btn);
+btn.innerText="confirm"
+btn.setAttribute("id","bt")
+btn.addEventListener("click",()=>{
+window.location.assign("./val2.html");
+
+})
+  </script>  
+</body>
+</html>

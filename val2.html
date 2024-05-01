@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        form{
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           gap: 10px;
+        }
+        #trigger{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>LOG IN</h1>
+    <form action="">
+        <input type="text" placeholder="username">
+        <span id="trigger">Enter user Name</span>
+        <input type="text" placeholder="password">
+        <span id="trigger">Enter Password</span>
+        <input type="submit">
+        <span id="trigger">Don't match user name and password</span>
+    </form>
+    <script>
+var f=document.forms;
+var spn=document.getElementsByTagName("span");
+var a=window.localStorage.getItem("users");
+var userdata= JSON.parse(a);
+f[0].addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    var obj={
+
+        username:e.target[0].value,
+        password:e.target[1].value
+    }
+
+    if(obj.username==0){
+
+        spn[0].style.display="inline";
+        spn[0].style.color="red";
+        e.target[0].style.border="2px solid red"
+        window.close();
+        window.open("./validation.html",alert("username or password should not be blank"));
+
+    }
+    if(obj.password==0){
+
+spn[1].style.display="inline";
+spn[1].style.color="red";
+e.target[1].style.border="2px solid red"
+}
+for(i=0;i<userdata.length;i++){
+
+if(obj.username==userdata[i].username && obj.password==userdata[i].password){
+
+    window.location.assign("https://suneel823.github.io/shoping/");
+}
+else{
+
+    spn[2].style.display="inline";
+    spn[2].style.color="red";
+
+}
+
+
+
+}
+
+
+
+})
+
+
+
+    </script>
+</body>
+</html>

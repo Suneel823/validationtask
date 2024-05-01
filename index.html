@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+#trigger{
+    display: none;
+}
+#one{
+    text-align: center;
+    color:darkred;
+}
+form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    
+}
+input{
+    border: 2px solid black;
+    border-radius: 20px ;
+    font-size: 30px;
+    
+}
+#btnn{
+    color: red;
+    text-align: center;
+    align-items: center;
+    margin-left: 850px;
+    
+}
+
+    </style>
+</head>
+<body>
+    <h1 id="one">REGISTRATION FORM</h1>
+    <form action="">
+<input type="text" placeholder="Enter User Name">
+<span id="trigger">User name can't be blank</span>
+<span id="trigger">User name already taken. try with different user names</span>
+<input type="text" placeholder="Enter your Password">
+<span id="trigger">Password can't be blank</span>
+<input type="text" placeholder="Enter your mail@gmail.com">
+<span id="trigger">E-mail id can't be blank</span>
+<input type="tel" placeholder="enter your phone number">
+<span id="trigger">Phone number can't be blank </span>
+<input type="submit">
+    </form>
+    <!-- <button id="btnn">LOG IN</button> -->
+    <script>
+var f=document.forms;
+var trig=document.getElementsByTagName("span");
+var arr=[];
+
+f[0].addEventListener("submit",function(e){
+
+e.preventDefault();
+obj={
+
+    username:e.target[0].value,
+    password:e.target[1].value,
+    email:e.target[2].value,
+    phone:e.target[3].value,
+}
+if(obj.username.length==0){
+
+    f[0][0].style.border = '2px solid red';
+                trig[0].style.display = 'inline';
+                trig[0].style.color = 'red';
+
+}
+if(obj.password.length==0){
+
+    f[0][1].style.border = '2px solid red';
+                trig[2].style.display = 'inline';
+                trig[2].style.color = 'red';
+
+}
+if(obj.email.length==0){
+
+    f[0][2].style.border = '2px solid red';
+                trig[3].style.display = 'inline';
+                trig[3].style.color = 'red';
+
+}
+if(obj.phone.length==0){
+
+    f[0][3].style.border = '2px solid red';
+                trig[4].style.display = 'inline';
+                trig[4].style.color = 'red';
+}
+
+for(i=0;i<arr.length;i++){
+
+if(obj.username==arr[i].username){
+
+    f[0][0].style.border = '2px solid purple';
+                trig[1].style.display = 'inline';
+                trig[1].style.color = 'purple';
+    
+}
+}
+if(obj.username.length==0 && obj.password.length==0 && obj.email.length==0 && obj.phone.length==0){
+
+alert("please fill the details")
+
+}
+else{
+    arr.push(obj);
+window.localStorage.setItem("users",JSON.stringify(arr));
+window.location.assign("./vali1.html")
+}
+e.target[0].value="";
+e.target[1].value="";
+e.target[2].value="";
+e.target[3].value="";
+
+
+});
+
+
+
+    </script>
+</body>
+</html>
